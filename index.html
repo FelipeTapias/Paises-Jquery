@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="logica.js"></script>
     <meta name="viewport" content="initial-scale=1">
     <style>
@@ -19,6 +20,44 @@
 
     <!-- <a href="" class="btn btn-primary">Hola, soy un botón</a> -->
 
+
+
+
+    <div class="sc-modal" id="sc-modal">
+        <div class="sc-modal__container">
+            <div class="sc-modal__content">
+                <div class="form-group m-5">
+                    <h6>Experiencia 1</h6>
+                    <div class="form-group">
+                        <label>Empresa</label>
+                        <input type="text" class="form-control" name="sc_company" placeholder="Ej. Sistenauta">
+                    </div>
+                    <div class="form-group">
+                        <label>Tiempo laborado</label>
+                        <select class="form-control" name="sc_time">
+                            <option>0-6 meses</option>
+                            <option>6 meses a 12 meses</option>
+                            <option>1 a 2 años</option>
+                            <option>2 a 5 años</option>
+                            <option>más de 5 años</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cargo que desempeño</label>
+                        <textarea type="text" class="form-control" name="sc_charge"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Describe tus funciones</label>
+                        <textarea type="text" class="form-control" name="sc_functions"></textarea>
+                    </div>
+                    <button class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+            <a class="sc-modal__close" href="#">
+                <div class="sc-modal__close--cross"></div>
+            </a>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="container">
             <!-- <div class="input-group mb-3">
@@ -32,203 +71,146 @@
 
             <div class="card d-none" style="width: 18rem; margin:auto;"> -->
 
-        </div>
 
-        <!--Prueba del Step Form-->
-        <form id="sc-form">
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
-                    <h2>Información personal</h2>
-                    <small class="form-text text-muted">'*' campos obligatorios</small>
-                    <br>
-                    <div class="form-group">
-                        <label>Nombre completo*</label>
-                        <input type="text" class="form-control" name="sc_name" placeholder="Ej. Felipe Tapias">
+
+            <!--Prueba del Step Form-->
+
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-6">
+                    <div class="jumbotron">
+                        <h1 class="display-4">Trabaja contigo mismo!</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr class="my-4">
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                     </div>
-                    <div class="form-group">
-                        <label>Tipo de documento*</label>
-                        <select class="form-control" name="sc_type_document">
-                            <option>Cédula de Ciudadanía</option>
-                            <option>Cédula de Extranjería</option>
-                          </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Número de documento*</label>
-                        <input type="number" class="form-control" name="sc_number_document" placeholder="Ej. 1000427621">
-                    </div>
-                    <div class="form-group">
-                        <label>Celular*</label>
-                        <input type="number" class="form-control" name="sc_phone" placeholder="Ej. 3043772590">
-                    </div>
-                    <div class="form-group">
-                        <label>Correo electrónico*</label>
-                        <input type="email" class="form-control" name="sc_email" placeholder="Ej. correo@correo.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Departamento y Ciudad*</label>
-                        <select class="form-control" name="sc_location">
-                            <option>Medellín (Ant)</option>
-                            <option>La Estrella (Ant)</option>
-                          </select>
-                    </div>
-                    <button class="btn btn-primary" type="button" id="next-step-2" data-toggle="tab" href="#nav-profile" onclick="quitarClase('prev-step-1')" role="tab">Siguiente</button>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6">
+                    <form id="sc-form">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
+                                <h2>Información personal</h2>
+                                <small class="form-text text-muted">'*' campos obligatorios</small>
+                                <br>
+                                <div class="form-group">
+                                    <label>Nombre completo*</label>
+                                    <input type="text" class="form-control" name="sc_name" placeholder="Ej. Felipe Tapias">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tipo de documento*</label>
+                                    <select class="form-control" name="sc_type_document">
+                                        <option>Cédula de Ciudadanía</option>
+                                        <option>Cédula de Extranjería</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Número de documento*</label>
+                                    <input type="number" class="form-control" name="sc_number_document" placeholder="Ej. 1000427621">
+                                </div>
+                                <div class="form-group">
+                                    <label>Celular*</label>
+                                    <input type="number" class="form-control" name="sc_phone" placeholder="Ej. 3043772590">
+                                </div>
+                                <div class="form-group">
+                                    <label>Correo electrónico*</label>
+                                    <input type="email" class="form-control" name="sc_email" placeholder="Ej. correo@correo.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Departamento y Ciudad*</label>
+                                    <select class="form-control" name="sc_location">
+                                        <option>Medellín (Ant)</option>
+                                        <option>La Estrella (Ant)</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary" type="button" id="next-step-2" data-toggle="tab" href="#nav-profile" onclick="quitarClase('prev-step-1')" role="tab">Siguiente</button>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel">
+                                <h2>Información académica</h2>
+                                <small class="form-text text-muted">'*' campos obligatorios</small>
+                                <br>
+                                <div class="form-group">
+                                    <label>Formación*</label>
+                                    <select class="form-control" name="sc_formation" id="sc_formation">
+                                        <option value="1">Doctorado</option>
+                                        <option value="2">Maestría</option>
+                                        <option value="3">Especialización</option>
+                                        <option value="4">Pregrado</option>
+                                        <option value="5">Tecnologia</option>
+                                        <option value="6">Técnico</option>
+                                        <option value="7">Bachiller</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Carreras afines*</label>
+                                    <select class="form-control" name="sc_formation_related" id="sc_formation_related">
+                                        <option value="1">Selecciona...</option>
+                                        <option value="2">Administración de empresas</option>
+                                        <option value="3">Gestión del Talento Humano</option>
+                                        <option value="4">Seguridad y Salud en el Trabajo</option>
+                                        <option value="5">Contaduría</option>
+                                        <option value="6">Derecho</option>
+                                        <option value="7">Mercadeo</option>
+                                        <option value="8">Comercio</option>
+                                        <option value="9">Negocios Internacionales</option>
+                                        <option value="10">Finanzas</option>
+                                        <option value="11">Desarrollo</option>
+                                        <option value="12">Infraestructura</option>
+                                        <option value="13">Proyectos</option>
+                                        <option value="14">Tecnología</option>
+                                        <option value="15">Telecomunicaciones</option>
+                                        <option value="16">Soporte técnico</option>
+                                        <option value="17">Otros</option>
+                                    </select>
+                                </div>
+                                <div class="form-group d-none" id="sc_other">
+                                    <label>Especifica que otro*</label>
+                                    <textarea type="text" class="form-control" name="sc_other_related" placeholder="Ej. otra carrera"></textarea>
+                                </div>
+                                <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-1" href="#nav-home" onclick="quitarClase('next-step-2')" role="tab">Regresar</button>
+                                <button class="btn btn-primary" type="button" data-toggle="tab" id="next-step-3" href="#nav-contact" onclick="quitarClase('prev-step-2')" role="tab">Siguiente</button>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel">
+                                <h2>Información laboral</h2>
+                                <small id="emailHelp" class="form-text text-muted">'*' campos obligatorios</small>
+                                <br>
+                                <div class="form-group">
+                                    <label>Cargo al que aspira</label>
+                                    <input type="text" class="form-control" placeholder="Desarrollador de Software" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Aspiración salarial</label>
+                                    <input type="text" class="form-control" name="sc_salary" id="sc_salary" placeholder="Ej. 2200000">
+                                </div>
+                                <h4 class="text-center">Experiencias laborales</h4>
+                                <br>
+                                <a class="btn btn-primary" type="button" id="boton_xp" onclick="quitarClaseNone()" href="#sc-modal" role="tab">Agregar experiencia</a>
+                                <br>
+                                <br>
+                                <div class="custom-file form-group">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label">Adjuntar hoja de vida</label>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" name="sc_policy" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Autorizo a Sistecrédito S.A.S para utilizar mis datos de acuerdo con la Política de privacidad</label>
+                                </div>
+                                <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-2" href="#nav-profile" onclick="quitarClase('next-step-3')" role="tab">Regresar</button>
+                                <button class="btn btn-primary" type="button" data-toggle="tab" href="#nav-contact" role="tab">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel">
-                    <h2>Información académica</h2>
-                    <small class="form-text text-muted">'*' campos obligatorios</small>
-                    <br>
-                    <div class="form-group">
-                        <label>Formación*</label>
-                        <select class="form-control" name="sc_formation" id="sc_formation">
-                            <option value="1">Doctorado</option>
-                            <option value="2">Maestría</option>
-                            <option value="3">Especialización</option>
-                            <option value="4">Pregrado</option>
-                            <option value="5">Tecnologia</option>
-                            <option value="6">Técnico</option>
-                            <option value="7">Bachiller</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Carreras afines*</label>
-                        <select class="form-control" name="sc_formation_related" id="sc_formation_related">
-                            <option value="1">Selecciona...</option>
-                            <option value="2">Administración de empresas</option>
-                            <option value="3">Gestión del Talento Humano</option>
-                            <option value="4">Seguridad y Salud en el Trabajo</option>
-                            <option value="5">Contaduría</option>
-                            <option value="6">Derecho</option>
-                            <option value="7">Mercadeo</option>
-                            <option value="8">Comercio</option>
-                            <option value="9">Negocios Internacionales</option>
-                            <option value="10">Finanzas</option>
-                            <option value="11">Desarrollo</option>
-                            <option value="12">Infraestructura</option>
-                            <option value="13">Proyectos</option>
-                            <option value="14">Tecnología</option>
-                            <option value="15">Telecomunicaciones</option>
-                            <option value="16">Soporte técnico</option>
-                            <option value="17">Otros</option>
-                        </select>
-                    </div>
-                    <div class="form-group d-none" id="sc_other">
-                        <label>Especifica que otro*</label>
-                        <textarea type="text" class="form-control" name="sc_other_related" placeholder="Ej. otra carrera"></textarea>
-                    </div>
-                    <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-1" href="#nav-home" onclick="quitarClase('next-step-2')" role="tab">Regresar</button>
-                    <button class="btn btn-primary" type="button" data-toggle="tab" id="next-step-3" href="#nav-contact" onclick="quitarClase('prev-step-2')" role="tab">Siguiente</button>
-                </div>
-
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel">
-                    <h2>Información laboral</h2>
-                    <small id="emailHelp" class="form-text text-muted">'*' campos obligatorios</small>
-                    <br>
-                    <div class="form-group">
-                        <label>Cargo al que aspira</label>
-                        <input type="text" class="form-control" placeholder="Desarrollador de Software" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Aspiración salarial</label>
-                        <input type="number" class="form-control" name="sc_salary" placeholder="Ej. 2200000">
-                    </div>
-                    <h4 class="text-center">Experiencias laborales</h4>
-                    <br>
-                    <div class="form-group">
-                        <h6>Experiencia 1</h6>
-                        <div class="form-group">
-                            <label>Empresa</label>
-                            <input type="number" class="form-control" placeholder="Ej. Sistenauta">
-                        </div>
-                        <div class="form-group">
-                            <label>Tiempo laborado</label>
-                            <select class="form-control">
-                                <option>0-6 meses</option>
-                                <option>6 meses a 12 meses</option>
-                                <option>1 a 2 años</option>
-                                <option>2 a 5 años</option>
-                                <option>más de 5 años</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Cargo que desempeño</label>
-                            <textarea type="text" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Describe tus funciones</label>
-                            <textarea type="text" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group d-none" id="xp_dos">
-                        <h6>Experiencia 2</h6>
-                        <div class="form-group">
-                            <label>Empresa</label>
-                            <input type="number" class="form-control" placeholder="Ej. Sistenauta">
-                        </div>
-                        <div class="form-group">
-                            <label>Tiempo laborado</label>
-                            <select class="form-control">
-                                <option>0-6 meses</option>
-                                <option>6 meses a 12 meses</option>
-                                <option>1 a 2 años</option>
-                                <option>2 a 5 años</option>
-                                <option>más de 5 años</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Cargo que desempeño</label>
-                            <textarea type="text" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Describe tus funciones</label>
-                            <textarea type="text" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group d-none" id="xp_tres">
-                        <h6>Experiencia 3</h6>
-                        <div class="form-group">
-                            <label>Empresa</label>
-                            <input type="number" class="form-control" placeholder="Ej. Sistenauta">
-                        </div>
-                        <div class="form-group">
-                            <label>Tiempo laborado</label>
-                            <select class="form-control">
-                                <option>0-6 meses</option>
-                                <option>6 meses a 12 meses</option>
-                                <option>1 a 2 años</option>
-                                <option>2 a 5 años</option>
-                                <option>más de 5 años</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Cargo que desempeño</label>
-                            <textarea type="text" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Describe tus funciones</label>
-                            <textarea type="text" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" type="button" id="boton_xp" onclick="quitarClaseNone()" role="tab">Agregar otra experiencia</button>
-                    <br>
-                    <br>
-                    <div class="custom-file form-group">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                        <label class="custom-file-label">Adjuntar hoja de vida</label>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Acepto terminos y condiciones</label>
-                    </div>
-                    <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-2" href="#nav-profile" onclick="quitarClase('next-step-3')" role="tab">Regresar</button>
-                    <button class="btn btn-primary" type="button" data-toggle="tab" href="#nav-contact" role="tab">Enviar</button>
-                </div>
             </div>
-        </form>
+        </div>
     </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 </body>

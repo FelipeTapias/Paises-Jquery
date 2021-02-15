@@ -87,6 +87,7 @@ function quitarClaseNone() {
 function validationForm() {
 
     var form = $('#sc-form');
+    var reg = "([0-9.])"
 
     $('#sc_formation').on('change', function() {
         let formation = $('#sc_formation option:selected').val();
@@ -107,6 +108,9 @@ function validationForm() {
             $('#sc_other').addClass('d-none');
         }
     });
+
+    $("#sc_salary").mask('000.000.000.000', { reverse: true });
+
 
 
     $.validator.addMethod("letters",
@@ -130,6 +134,10 @@ function validationForm() {
 
     $.validator.addMethod("scCustomSelect", function(value, element) {
         return value;
+    });
+
+    $.validator.addMethod("scCustomSalary", function(value, elements) {
+        return value == value.match([0 - 9.]);
     });
 
     form.validate({
@@ -180,8 +188,29 @@ function validationForm() {
             },
             sc_salary: {
                 required: true,
-                maxlength: 8,
-                digits: true
+                maxlength: 10,
+                scCustomSalary: false
+            },
+            sc_company: {
+                required: true,
+                maxlength: 50
+            },
+            sc_time: {
+                required: true,
+                scCustomSelect: true,
+                minlength: 1,
+            },
+            sc_charge: {
+                required: true,
+                maxlength: 50
+            },
+            sc_functions: {
+                required: true,
+                maxlength: 500
+            },
+            sc_policy: {
+                required: true,
+                minlength: 1
             }
         },
         messages: {
@@ -190,7 +219,11 @@ function validationForm() {
             sc_number_document: "Te faltó diligenciar este campo",
             sc_email: "Escribe un correo válido",
             sc_other_related: "Máximo 100 caracteres",
-            sc_salary: "Escribe correctamente este campo"
+            sc_salary: "Máximo 8 caracteres",
+            sc_company: "Máximo 50 caracteres",
+            sc_charge: "Máximo 100 caracteres",
+            sc_functions: "Máximo 500 caracteres",
+            sc_policy: "Debes aceptar las políticas de privacidad"
 
         },
         highlight: function(element, errorClass, validClass) {
