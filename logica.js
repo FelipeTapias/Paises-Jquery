@@ -70,24 +70,27 @@ function quitarClase(id) {
 
 }
 
-var contador = 1;
+//Agregar experiencia en el mismo template, pero se cambia por el modal
+// var contador = 1;
+// function quitarClaseNone() {
+//     if (contador == 1) {
+//         console.log('Click 1');
+//         contador++;
+//         $('#xp_dos').removeClass('d-none');
+//     } else if (contador == 2) {
+//         console.log('Click 2');
+//         $('#xp_tres').removeClass('d-none');
+//         $('#boton_xp').attr('disabled', 'disabled');
+//     }
+// }
 
-function quitarClaseNone() {
-    if (contador == 1) {
-        console.log('Click 1');
-        contador++;
-        $('#xp_dos').removeClass('d-none');
-    } else if (contador == 2) {
-        console.log('Click 2');
-        $('#xp_tres').removeClass('d-none');
-        $('#boton_xp').attr('disabled', 'disabled');
-    }
+function addAttr() {
+    $('#boton_xp').attr('href', "#sc-modal");
 }
 
 function validationForm() {
 
     var form = $('#sc-form');
-    var reg = "([0-9.])"
 
     $('#sc_formation').on('change', function() {
         let formation = $('#sc_formation option:selected').val();

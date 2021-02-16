@@ -20,44 +20,6 @@
 
     <!-- <a href="" class="btn btn-primary">Hola, soy un botón</a> -->
 
-
-
-
-    <div class="sc-modal" id="sc-modal">
-        <div class="sc-modal__container">
-            <div class="sc-modal__content">
-                <div class="form-group m-5">
-                    <h6>Experiencia 1</h6>
-                    <div class="form-group">
-                        <label>Empresa</label>
-                        <input type="text" class="form-control" name="sc_company" placeholder="Ej. Sistenauta">
-                    </div>
-                    <div class="form-group">
-                        <label>Tiempo laborado</label>
-                        <select class="form-control" name="sc_time">
-                            <option>0-6 meses</option>
-                            <option>6 meses a 12 meses</option>
-                            <option>1 a 2 años</option>
-                            <option>2 a 5 años</option>
-                            <option>más de 5 años</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Cargo que desempeño</label>
-                        <textarea type="text" class="form-control" name="sc_charge"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Describe tus funciones</label>
-                        <textarea type="text" class="form-control" name="sc_functions"></textarea>
-                    </div>
-                    <button class="btn btn-primary">Confirmar</button>
-                </div>
-            </div>
-            <a class="sc-modal__close" href="#">
-                <div class="sc-modal__close--cross"></div>
-            </a>
-        </div>
-    </div>
     <div class="container-fluid">
         <div class="container">
             <!-- <div class="input-group mb-3">
@@ -186,7 +148,7 @@
                                 </div>
                                 <h4 class="text-center">Experiencias laborales</h4>
                                 <br>
-                                <a class="btn btn-primary" type="button" id="boton_xp" onclick="quitarClaseNone()" href="#sc-modal" role="tab">Agregar experiencia</a>
+                                <a class="btn btn-primary" type="button" id="boton_xp" onclick="addAttr()">Agregar experiencia</a>
                                 <br>
                                 <br>
                                 <div class="custom-file form-group">
@@ -196,11 +158,46 @@
                                 <br>
                                 <br>
                                 <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" name="sc_policy" id="exampleCheck1">
+                                    <input type="checkbox" class="form-check-input" name="sc_policy">
                                     <label class="form-check-label" for="exampleCheck1">Autorizo a Sistecrédito S.A.S para utilizar mis datos de acuerdo con la Política de privacidad</label>
                                 </div>
                                 <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-2" href="#nav-profile" onclick="quitarClase('next-step-3')" role="tab">Regresar</button>
                                 <button class="btn btn-primary" type="button" data-toggle="tab" href="#nav-contact" role="tab">Enviar</button>
+                            </div>
+                        </div>
+                        <div class="sc-modal" id="sc-modal">
+                            <div class="sc-modal__container">
+                                <div class="sc-modal__content">
+                                    <div class="form-group m-5">
+                                        <h6>Experiencia 1</h6>
+                                        <div class="form-group">
+                                            <label>Empresa</label>
+                                            <input type="text" class="form-control" name="sc_company" placeholder="Ej. Sistenauta">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tiempo laborado</label>
+                                            <select class="form-control" name="sc_time">
+                                                <option>0-6 meses</option>
+                                                <option>6 meses a 12 meses</option>
+                                                <option>1 a 2 años</option>
+                                                <option>2 a 5 años</option>
+                                                <option>más de 5 años</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Cargo que desempeño</label>
+                                            <textarea type="text" class="form-control" name="sc_charge"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Describe tus funciones</label>
+                                            <textarea type="text" class="form-control" name="sc_functions"></textarea>
+                                        </div>
+                                        <button class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                </div>
+                                <a class="sc-modal__close" href="#">
+                                    <div class="sc-modal__close--cross"></div>
+                                </a>
                             </div>
                         </div>
                     </form>
