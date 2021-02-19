@@ -29,7 +29,6 @@
 .sc-modal__close {
     width: 60px;
     height: 60px;
-    position: absolute;
     top: .5rem;
     right: .5rem;
     cursor: pointer;
@@ -47,7 +46,6 @@
 .sc-modal__close--cross::before {
     background-color: rgb(240, 240, 240);
     content: 'X';
-    position: absolute;
     display: block;
     top: 0;
     bottom: 0;
