@@ -51,50 +51,51 @@
                 <div class="col-sm-12 col-md-12 col-lg-6">
                     <form id="sc-form">
                         <div class="tab-content">
+                            <!-- Step one -->
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
                                 <h2>Información personal</h2>
                                 <small class="form-text text-muted">'*' campos obligatorios</small>
                                 <br>
                                 <div class="form-group">
                                     <label>Nombre completo*</label>
-                                    <input type="text" class="form-control" name="sc_name" placeholder="Ej. Felipe Tapias">
+                                    <input type="text" class="form-control sc-control__required" name="sc_name" id="sc_name" placeholder="Ej. Felipe Tapias">
                                 </div>
                                 <div class="form-group">
                                     <label>Tipo de documento*</label>
-                                    <select class="form-control" name="sc_type_document">
+                                    <select class="form-control sc-control__required" name="sc_type_document">
                                         <option>Cédula de Ciudadanía</option>
                                         <option>Cédula de Extranjería</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Número de documento*</label>
-                                    <input type="number" class="form-control" name="sc_number_document" placeholder="Ej. 1000427621">
+                                    <input type="number" class="form-control sc-control__required" name="sc_number_document" id="sc_number_document" placeholder="Ej. 1000427621">
                                 </div>
                                 <div class="form-group">
                                     <label>Celular*</label>
-                                    <input type="number" class="form-control" name="sc_phone" placeholder="Ej. 3043772590">
+                                    <input type="number" class="form-control sc-control__required" name="sc_phone" id="sc_phone" placeholder="Ej. 3043772590">
                                 </div>
                                 <div class="form-group">
                                     <label>Correo electrónico*</label>
-                                    <input type="email" class="form-control" name="sc_email" placeholder="Ej. correo@correo.com">
+                                    <input type="email" class="form-control sc-control__required" name="sc_email" id="sc_email" placeholder="Ej. correo@correo.com">
                                 </div>
                                 <div class="form-group">
                                     <label>Departamento y Ciudad*</label>
-                                    <select class="form-control" name="sc_location">
+                                    <select class="form-control sc-control__required" name="sc_location" id="sc_location">
                                         <option>Medellín (Ant)</option>
                                         <option>La Estrella (Ant)</option>
                                     </select>
                                 </div>
                                 <button class="btn btn-primary" type="button" id="next-step-2" data-toggle="tab" href="#nav-profile" onclick="quitarClase('prev-step-1')" role="tab">Siguiente</button>
                             </div>
-
+                            <!-- Step two -->
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel">
                                 <h2>Información académica</h2>
                                 <small class="form-text text-muted">'*' campos obligatorios</small>
                                 <br>
                                 <div class="form-group">
                                     <label>Formación*</label>
-                                    <select class="form-control" name="sc_formation" id="sc_formation">
+                                    <select class="form-control" name="sc_formation sc-control__required" id="sc_formation">
                                         <option value="1">Doctorado</option>
                                         <option value="2">Maestría</option>
                                         <option value="3">Especialización</option>
@@ -107,7 +108,6 @@
                                 <div class="form-group">
                                     <label>Carreras afines*</label>
                                     <select class="form-control" name="sc_formation_related" id="sc_formation_related">
-                                        <option value="1">Selecciona...</option>
                                         <option value="2">Administración de empresas</option>
                                         <option value="3">Gestión del Talento Humano</option>
                                         <option value="4">Seguridad y Salud en el Trabajo</option>
@@ -128,12 +128,12 @@
                                 </div>
                                 <div class="form-group d-none" id="sc_other">
                                     <label>Especifica que otro*</label>
-                                    <textarea type="text" class="form-control" name="sc_other_related" placeholder="Ej. otra carrera"></textarea>
+                                    <textarea type="text" class="form-control" name="sc_other_related" id="sc_other_related" placeholder="Ej. otra carrera"></textarea>
                                 </div>
                                 <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-1" href="#nav-home" onclick="quitarClase('next-step-2')" role="tab">Regresar</button>
                                 <button class="btn btn-primary" type="button" data-toggle="tab" id="next-step-3" href="#nav-contact" onclick="quitarClase('prev-step-2')" role="tab">Siguiente</button>
                             </div>
-
+                            <!-- Step three -->
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel">
                                 <h2>Información laboral</h2>
                                 <small id="emailHelp" class="form-text text-muted">'*' campos obligatorios</small>

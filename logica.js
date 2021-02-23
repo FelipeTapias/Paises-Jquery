@@ -97,6 +97,7 @@ function validationForm() {
         console.log($('#sc_formation option:selected').val());
         if (formation == 7) {
             $('#sc_formation_related').attr('disabled', 'disabled');
+            $('#sc_other').addClass('d-none');
         } else {
             $('#sc_formation_related').removeAttr('disabled');
         }
@@ -243,6 +244,47 @@ function validationForm() {
     });
 }
 
+function activate_button_one() {
+    var arrayVariables = [];
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    $('.sc-control__required').on('change', function(e) {
+        var validInputs = {
+            'sc_name': $('#sc_name').val().length >= 6,
+            'sc_number_document': $('#sc_number_document').val().length >= 6 && $('#sc_number_document').val().length <= 10,
+            'sc_phone': $('#sc_phone').val().length >= 10 && $('#sc_phone').val().length <= 20,
+            'sc_email': regex.test($('#sc_email').val())
+        };
+        Object.entries(validInputs).forEach(function(entry, index) {
+            var entryValue = entry[1];
+            arrayVariables[index] = entryValue;
+        })
+        var isValid = function isValid(currentValue) {
+            return currentValue;
+        };
+        if (arrayVariables.every(isValid)) {
+            $('#next-step-2').removeAttr('disabled');
+        } else {
+            $('#next-step-2').attr('disabled', 'disabled');
+        }
+    })
+}
+
+function activate_button_two() {
+    $('#sc_formation_related').on('change', function() {
+        let formation = $('#sc_formation_related option:selected').val();
+        if (formation == 17) {
+            $('#next-step-3').attr('disabled', 'disabled');
+            var validInputs = {
+                'sc_other_related':
+            }
+        } else {
+            $('#next-step-3').attr('disabled');
+        }
+    })
+}
+
 $(function() {
     validationForm();
+    activate_button_one();
+    activate_button_two();
 })
