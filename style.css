@@ -4,7 +4,7 @@
     bottom: 0;
     margin: auto;
     z-index: 9999;
-    width: 100vw;
+    width: 50vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .3);
     overflow: auto;
@@ -39,7 +39,7 @@
     width: 30px;
     height: 30px;
     position: relative;
-    margin: auto;
+    margin-bottom: 1rem;
 }
 
 .sc-modal__close--cross::after,

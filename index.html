@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.13.1/additional-methods.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="logica.js"></script>
     <meta name="viewport" content="initial-scale=1">
@@ -86,7 +87,7 @@
                                         <option>La Estrella (Ant)</option>
                                     </select>
                                 </div>
-                                <button class="btn btn-primary" type="button" id="next-step-2" data-toggle="tab" href="#nav-profile" onclick="quitarClase('prev-step-1')" role="tab">Siguiente</button>
+                                <button class="btn btn-primary" type="button" id="next-step-2" disabled data-toggle="tab" href="#nav-profile" onclick="quitarClase('prev-step-1')" role="tab">Siguiente</button>
                             </div>
                             <!-- Step two -->
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel">
@@ -95,7 +96,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>Formación*</label>
-                                    <select class="form-control" name="sc_formation sc-control__required" id="sc_formation">
+                                    <select class="form-control sc-control__required" name="sc_formation" id="sc_formation">
                                         <option value="1">Doctorado</option>
                                         <option value="2">Maestría</option>
                                         <option value="3">Especialización</option>
@@ -107,7 +108,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Carreras afines*</label>
-                                    <select class="form-control" name="sc_formation_related" id="sc_formation_related">
+                                    <select class="form-control sc-control__required" name="sc_formation_related" id="sc_formation_related">
                                         <option value="2">Administración de empresas</option>
                                         <option value="3">Gestión del Talento Humano</option>
                                         <option value="4">Seguridad y Salud en el Trabajo</option>
@@ -128,10 +129,10 @@
                                 </div>
                                 <div class="form-group d-none" id="sc_other">
                                     <label>Especifica que otro*</label>
-                                    <textarea type="text" class="form-control" name="sc_other_related" id="sc_other_related" placeholder="Ej. otra carrera"></textarea>
+                                    <textarea type="text" class="form-control sc-control__required" name="sc_other_related" id="sc_other_related" placeholder="Ej. otra carrera"></textarea>
                                 </div>
                                 <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-1" href="#nav-home" onclick="quitarClase('next-step-2')" role="tab">Regresar</button>
-                                <button class="btn btn-primary" type="button" data-toggle="tab" id="next-step-3" href="#nav-contact" onclick="quitarClase('prev-step-2')" role="tab">Siguiente</button>
+                                <button class="btn btn-primary" type="button" data-toggle="tab" disabled id="next-step-3" href="#nav-contact" onclick="quitarClase('prev-step-2')" role="tab">Siguiente</button>
                             </div>
                             <!-- Step three -->
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel">
@@ -144,7 +145,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Aspiración salarial</label>
-                                    <input type="text" class="form-control" name="sc_salary" id="sc_salary" placeholder="Ej. 2200000">
+                                    <input type="text" class="form-control sc-control__required" name="sc_salary" id="sc_salary" placeholder="Ej. 2200000">
                                 </div>
                                 <h4 class="text-center">Experiencias laborales</h4>
                                 <br>
@@ -152,17 +153,17 @@
                                 <br>
                                 <br>
                                 <div class="custom-file form-group">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label">Adjuntar hoja de vida</label>
+                                    <label for="sc_file">Adjunta tu hoja de vida:</label>
+                                    <input type="file" class="form-control" name="sc_file" id="sc_file">
                                 </div>
                                 <br>
                                 <br>
                                 <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" name="sc_policy">
+                                    <input type="checkbox" class="form-check-input sc-control__required" name="sc_policy" id="sc_policy">
                                     <label class="form-check-label" for="exampleCheck1">Autorizo a Sistecrédito S.A.S para utilizar mis datos de acuerdo con la Política de privacidad</label>
                                 </div>
                                 <button class="btn btn-primary" type="button" data-toggle="tab" id="prev-step-2" href="#nav-profile" onclick="quitarClase('next-step-3')" role="tab">Regresar</button>
-                                <button class="btn btn-primary" type="button" data-toggle="tab" href="#nav-contact" role="tab">Enviar</button>
+                                <button class="btn btn-primary" type="submit" disabled data-toggle="tab" href="#nav-contact" id="submit" role="tab">Enviar</button>
                             </div>
                         </div>
                         <div class="sc-modal" id="sc-modal">
