@@ -17,6 +17,7 @@ function quitarClase(id) {
 //     }
 // }
 
+
 function addAttr() {
     $('#boton_xp').attr('href', "#sc-modal");
 }
@@ -54,7 +55,6 @@ function validationForm() {
     $.validator.addMethod("wordCount",
         (value, element, params) => {
             var typedWords = value.match(/\b/g).length / 2;
-
             if (typedWords >= params[0]) {
                 return true;
             }
@@ -64,6 +64,10 @@ function validationForm() {
     $.validator.addMethod("extensionSize", function(value, element) {
         let file = value;
         return /(^.*\.(jpg|JPG|gif|png|doc|DOC|pdf|PDF|docx|DOCX)$)/.test(file);
+    });
+
+    $.validator.addMethod("sizeFile", function(value, element, param) {
+        return element.files[0].size <= param;
     });
 
     $.validator.addMethod("scCustomEmail", (value, element) => {
@@ -154,7 +158,8 @@ function validationForm() {
             },
             sc_file: {
                 required: true,
-                extensionSize: true
+                extensionSize: true,
+                sizeFile: 3000000
             }
         },
         messages: {
@@ -170,7 +175,8 @@ function validationForm() {
             sc_policy: "Debes aceptar las políticas de privacidad",
             sc_file: {
                 required: "Te faltó diligenciar este campo 1",
-                extensionSize: "Formato de archivo inválido"
+                extensionSize: "Formato de archivo inválido",
+                sizeFile: "Archivo mayor a 2MB"
             },
 
         },
@@ -253,11 +259,13 @@ function activate_button_two() {
 
 function activate_button_three() {
     var arrayVariables = [];
+    var regex = /(^.*\.(jpg|JPG|gif|png|doc|DOC|pdf|PDF|docx|DOCX)$)/;
 
     $('.sc-control__required').on('change', _ => {
         var validInputs = {
             'sc_salary': $('#sc_salary').val().length >= 1 && $('#sc_salary').val().length <= 10,
-            'sc_policy': $('#sc_policy').prop('checked')
+            'sc_policy': $('#sc_policy').prop('checked'),
+            'sc_file': $('#sc_file').size >= 3000
         };
         Object.entries(validInputs).forEach((entry, index) => {
             var entryValue = entry[1];
@@ -278,3 +286,10 @@ $(_ => {
     activate_button_two();
     activate_button_three();
 })
+
+// $(document).ready(function() {
+//     $('#sc_file').on('change', function() {
+//         var thisElement = $(this);
+//         console.info(thisElement[0].files[0].size);
+//     })
+// })
