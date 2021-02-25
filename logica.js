@@ -1,70 +1,3 @@
-$(document).ready(function() {
-    $('#selectCountry').on('change', function() {
-        let alphaCodeCountry = $('#selectCountry option:selected').val();
-        // console.log($('#selectCountry option:selected').val());
-        getOneCountry(alphaCodeCountry);
-    });
-})
-
-
-$.ajax({
-    // la URL para la petición
-    url: 'https://restcountries.eu/rest/v2/all',
-    // especifica si será una petición POST o GET
-    type: 'GET',
-    // el tipo de información que se espera de respuesta
-    dataType: 'json',
-
-    // código a ejecutar si la petición es satisfactoria;
-    // la respuesta es pasada como argumento a la función
-    success: function(countrys) {
-        countrys.forEach(country => {
-            $('#selectCountry').append('<option value="' + country.alpha3Code + '">' + country.name + '</option>');
-        });
-    },
-
-    // código a ejecutar si la petición falla;
-    // son pasados como argumentos a la función
-    // el objeto de la petición en crudo y código de estatus de la petición
-    error: function(xhr, status) {
-        alert('Disculpe, existió un problema');
-    },
-});
-
-function getOneCountry(alphaCode) {
-    $.ajax({
-        // la URL para la petición
-        url: 'https://restcountries.eu/rest/v2/alpha/' + alphaCode,
-
-        // especifica si será una petición POST o GET
-        type: 'GET',
-
-        // el tipo de información que se espera de respuesta
-        dataType: 'json',
-
-        // código a ejecutar si la petición es satisfactoria;
-        // la respuesta es pasada como argumento a la función
-        success: (data) => {
-            let currencyOptions = "";
-            data.currencies.forEach((currencie, index) => {
-                currencyOptions += currencie.name + ", ";
-            })
-            console.log(data);
-            $('.card').removeClass('d-none');
-            "<img src='" + data.flag + "' class='card-img-top' alt='flag'>" +
-                $('.card').html(
-                    "<div class='card-body'>" +
-                    "<h5 class='card-title'>" + data.name + "</h5>" +
-                    "</div>" +
-                    "<ul class='list-group list-group-flush'>" +
-                    "<li class='list-group-item'>Capital: " + data.capital + " </li>" +
-                    "<li class='list-group-item'>Región: " + data.region + "</li>" +
-                    "<li class='list-group-item'>Moneda: " + currencyOptions + " </li>" +
-                    "</ul>");
-        }
-    });
-}
-
 function quitarClase(id) {
     $('#' + id).removeClass('active');
 
@@ -94,7 +27,6 @@ function validationForm() {
 
     $('#sc_formation').on('change', _ => {
         let formation = $('#sc_formation option:selected').val();
-        console.log($('#sc_formation option:selected').val());
         if (formation == 7) {
             $('#sc_formation_related').attr('disabled', 'disabled');
             $('#sc_other').addClass('d-none');
@@ -105,7 +37,6 @@ function validationForm() {
 
     $('#sc_formation_related').on('change', _ => {
         let formation = $('#sc_formation_related option:selected').val();
-        console.log($('#sc_formation_related option:selected').val());
         if (formation == 17) {
             $('#sc_other').removeClass('d-none');
         } else {
@@ -130,12 +61,10 @@ function validationForm() {
         }
     );
 
-    $.validator.addMethod("fileSize",
-        (value, element, param) => {
-            let file = this.optional(element) || (element.files[0].size <= param);
-            return file;
-        }
-    )
+    $.validator.addMethod("extensionSize", function(value, element) {
+        let file = value;
+        return /(^.*\.(jpg|JPG|gif|png|doc|DOC|pdf|PDF|docx|DOCX)$)/.test(file);
+    });
 
     $.validator.addMethod("scCustomEmail", (value, element) => {
         return /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
@@ -225,8 +154,7 @@ function validationForm() {
             },
             sc_file: {
                 required: true,
-                fileSize: 2097152,
-                extension: "docx,jpg,png,doc,pdf"
+                extensionSize: true
             }
         },
         messages: {
@@ -241,9 +169,8 @@ function validationForm() {
             sc_functions: "Máximo 500 caracteres",
             sc_policy: "Debes aceptar las políticas de privacidad",
             sc_file: {
-                required: "Te faltó diligenciar este campo",
-                extension: "Formato de archivo no válido",
-                fileSize: "Tamaño máximo: 2MB"
+                required: "Te faltó diligenciar este campo 1",
+                extensionSize: "Formato de archivo inválido"
             },
 
         },
@@ -326,6 +253,7 @@ function activate_button_two() {
 
 function activate_button_three() {
     var arrayVariables = [];
+
     $('.sc-control__required').on('change', _ => {
         var validInputs = {
             'sc_salary': $('#sc_salary').val().length >= 1 && $('#sc_salary').val().length <= 10,
